@@ -23,12 +23,9 @@ use CoreShop\Component\Core\Model\PaymentInterface;
 
 final class ConvertPaymentAction implements ActionInterface
 {
-    /** @var DetailsProviderInterface */
-    private $detailsProvider;
-
-    public function __construct(DetailsProviderInterface $detailsProvider)
+    public function __construct(protected DetailsProviderInterface $detailsProvider)
     {
-        $this->detailsProvider = $detailsProvider;
+
     }
 
     /**

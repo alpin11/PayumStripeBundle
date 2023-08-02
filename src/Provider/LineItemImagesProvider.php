@@ -21,18 +21,12 @@ use Pimcore\Tool;
 
 final class LineItemImagesProvider implements LineItemImagesProviderInterface
 {
-    /** @var string */
-    private $thumbnailName;
-
-    /** @var string */
-    private $fallbackImage;
-
     public function __construct(
-        string $thumbnailName,
-        string $fallbackImage
-    ) {
-        $this->thumbnailName = $thumbnailName;
-        $this->fallbackImage = $fallbackImage;
+        protected string $thumbnailName,
+        protected string $fallbackImage
+    )
+    {
+
     }
 
     public function getImageUrls(OrderItemInterface $orderItem): array
@@ -42,7 +36,7 @@ final class LineItemImagesProvider implements LineItemImagesProviderInterface
         if (!$product instanceof ProductInterface) {
             return [];
         }
-        
+
         return [
             $this->getImageUrlFromProduct($product),
         ];
@@ -64,7 +58,7 @@ final class LineItemImagesProvider implements LineItemImagesProviderInterface
     private function getUrlFromPath(string $path): string
     {
         // Relative images are not displayed by Stripe because they cache it on a CDN
-        if(null === parse_url($path, PHP_URL_SCHEME)) {
+        if (null === parse_url($path, PHP_URL_SCHEME)) {
             $path = $this->fallbackImage;
         }
 

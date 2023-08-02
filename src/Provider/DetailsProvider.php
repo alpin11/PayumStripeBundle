@@ -18,28 +18,13 @@ use CoreShop\Component\Core\Model\OrderInterface;
 
 final class DetailsProvider implements DetailsProviderInterface
 {
-    /** @var CustomerEmailProviderInterface */
-    private $customerEmailProvider;
-
-    /** @var LineItemsProviderInterface */
-    private $lineItemsProvider;
-
-    /** @var PaymentMethodTypesProviderInterface */
-    private $paymentMethodTypesProvider;
-
-    /** @var LocaleProviderInterface */
-    private $localeProvider;
-
     public function __construct(
-        CustomerEmailProviderInterface $customerEmailProvider,
-        LineItemsProviderInterface $lineItemsProvider,
-        PaymentMethodTypesProviderInterface $paymentMethodTypesProvider,
-        LocaleProviderInterface $localeProvider
-    ) {
-        $this->customerEmailProvider = $customerEmailProvider;
-        $this->paymentMethodTypesProvider = $paymentMethodTypesProvider;
-        $this->lineItemsProvider = $lineItemsProvider;
-        $this->localeProvider = $localeProvider;
+        protected CustomerEmailProviderInterface      $customerEmailProvider,
+        protected LineItemsProviderInterface          $lineItemsProvider,
+        protected PaymentMethodTypesProviderInterface $paymentMethodTypesProvider,
+        protected LocaleProviderInterface             $localeProvider
+    )
+    {
     }
 
     public function getDetails(OrderInterface $order): array

@@ -18,18 +18,11 @@ use CoreShop\Component\Core\Model\OrderInterface;
 
 final class LineItemsProvider implements LineItemsProviderInterface
 {
-    /** @var LineItemProviderInterface */
-    private $lineItemProvider;
-
-    /** @var ShippingLineItemProviderInterface */
-    private $shippingLineItemProvider;
-
     public function __construct(
-        LineItemProviderInterface $lineItemProvider,
-        ShippingLineItemProviderInterface $shippingLineItemProvider
-    ) {
-        $this->lineItemProvider = $lineItemProvider;
-        $this->shippingLineItemProvider = $shippingLineItemProvider;
+        protected LineItemProviderInterface         $lineItemProvider,
+        protected ShippingLineItemProviderInterface $shippingLineItemProvider
+    )
+    {
     }
 
     public function getLineItems(OrderInterface $order): ?array

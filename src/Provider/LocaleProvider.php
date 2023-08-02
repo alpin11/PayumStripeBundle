@@ -10,27 +10,27 @@
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
  */
 
-declare(strict_types=1);
-
 namespace CoreShop\Payum\StripeBundle\Provider;
 
 use CoreShop\Component\Core\Model\OrderInterface;
 
-final class PaymentMethodTypesProvider implements PaymentMethodTypesProviderInterface
+final class LocaleProvider implements LocaleProviderInterface
 {
-    /** @var string[] */
-    private $paymentMethodTypes;
-
-    /**
-     * @param string[] $paymentMethodTypes
-     */
-    public function __construct(array $paymentMethodTypes)
+    public function getLocale(OrderInterface $order): ?string
     {
-        $this->paymentMethodTypes = $paymentMethodTypes;
-    }
+        $localeCode = $order->getLocaleCode();
 
-    public function getPaymentMethodTypes(OrderInterface $order): array
-    {
-        return $this->paymentMethodTypes;
+        if (empty($localeCode)) {
+            return null;
+        }
+
+        $gatewayLanguage = $localeCode;
+
+        if (str_contains($gatewayLanguage, '_')) {
+            $splitGatewayLLanguage = explode('_', $gatewayLanguage);
+            $gatewayLanguage = array_shift($splitGatewayLLanguage);
+        }
+
+        return $gatewayLanguage;
     }
 }

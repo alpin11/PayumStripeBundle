@@ -16,15 +16,23 @@ namespace CoreShop\Payum\StripeBundle\Provider;
 
 use CoreShop\Component\Core\Model\OrderInterface;
 
-final class CustomerEmailProvider implements CustomerEmailProviderInterface
+final class ShippingLineItemProvider implements ShippingLineItemProviderInterface
 {
-    public function getCustomerEmail(OrderInterface $order): ?string
+    public function __construct(protected ShippingLineItemNameProviderInterface $shippingLineItemProvider)
     {
-        $customer = $order->getCustomer();
-        if (null === $customer) {
+    }
+
+    public function getLineItem(OrderInterface $order): ?array
+    {
+        if (0 === $order->getShipping(false)) {
             return null;
         }
 
-        return $customer->getEmail();
+        return [
+            'amount' => $order->getShipping(),
+            'currency' => $order->getCurrency()->getIsoCode(),
+            'name' => $this->shippingLineItemProvider->getItemName($order),
+            'quantity' => 1,
+        ];
     }
 }

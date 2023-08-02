@@ -14,8 +14,8 @@ declare(strict_types=1);
 
 namespace CoreShop\Payum\StripeBundle\Provider;
 
-use CoreShop\Component\Core\Model\CarrierInterface;
 use CoreShop\Component\Core\Model\OrderInterface;
+use LogicException;
 
 final class ShippingLineItemNameProvider implements ShippingLineItemNameProviderInterface
 {

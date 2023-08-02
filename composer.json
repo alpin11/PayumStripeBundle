@@ -1,56 +1,62 @@
 {
-    "name": "coreshop/payum-stripe-bundle",
-    "type": "pimcore-bundle",
-    "description": "CoreShop - Stripe Bundle",
-    "keywords": [
-        "coreshop",
-        "pimcore",
-        "ecommerce",
-        "stripe"
-    ],
-    "homepage": "http://www.coreshop.org",
-    "license": "GPL-3.0-or-later",
-    "authors": [
-        {
-            "name": "Certimeter Group Mario Ramundo",
-            "email": "mario.ramundo@certimetergroup.com",
-            "homepage": "http://www.certimetergroup.com/",
-            "role": "Developer"
-        },
-        {
-            "name": "CoreShop Team",
-            "email": "info@coreshop.org",
-            "homepage": "https://www.coreshop.org/",
-            "role": "Developer"
-        },
-        {
-            "name": "Dominik Pfaffenbauer",
-            "email": "dominik@pfaffenbauer.at",
-            "homepage": "https://www.pfaffenbauer.at/",
-            "role": "Developer"
-        }
-    ],
-    "require": {
-        "php": ">=8.0",
-        "flux-se/payum-stripe": "^1.2",
-        "coreshop/payum-bundle": "^2.0 | ^3.0"
+  "name": "coreshop/payum-stripe-bundle",
+  "type": "pimcore-bundle",
+  "description": "CoreShop - Stripe Bundle",
+  "keywords": [
+    "coreshop",
+    "pimcore",
+    "ecommerce",
+    "stripe"
+  ],
+  "homepage": "http://www.coreshop.org",
+  "license": "GPL-3.0-or-later",
+  "authors": [
+    {
+      "name": "Certimeter Group Mario Ramundo",
+      "email": "mario.ramundo@certimetergroup.com",
+      "homepage": "http://www.certimetergroup.com/",
+      "role": "Developer"
     },
-    "config": {
-        "bin-dir": "bin"
+    {
+      "name": "CoreShop Team",
+      "email": "info@coreshop.org",
+      "homepage": "https://www.coreshop.org/",
+      "role": "Developer"
     },
-    "autoload": {
-        "psr-4": {
-            "CoreShop\\Payum\\StripeBundle\\": "src/CoreShop/Payum/StripeBundle"
-        }
+    {
+      "name": "Dominik Pfaffenbauer",
+      "email": "dominik@pfaffenbauer.at",
+      "homepage": "https://www.pfaffenbauer.at/",
+      "role": "Developer"
     },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.1-dev"
-        },
-        "pimcore": {
-            "bundles": [
-                "CoreShop\\Payum\\StripeBundle\\StripeBundle"
-            ]
-        }
+    {
+      "name": "David Höck",
+      "email": "d.hoeck@alpin11.com",
+      "homepage": "https://www.alpin11.com/",
+      "role": "Developer"
     }
+  ],
+  "require": {
+    "php": ">=8.0",
+    "flux-se/payum-stripe": "^1.2",
+    "coreshop/payum-bundle": "^2.0 | ^3.0 | ^4.0-dev"
+  },
+  "config": {
+    "bin-dir": "bin"
+  },
+  "autoload": {
+    "psr-4": {
+      "CoreShop\\Payum\\StripeBundle\\": "src/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "3.0-dev"
+    },
+    "pimcore": {
+      "bundles": [
+        "CoreShop\\Payum\\StripeBundle\\StripeBundle"
+      ]
+    }
+  }
 }

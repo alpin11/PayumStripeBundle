@@ -20,18 +20,11 @@ use CoreShop\Component\Order\Model\AdjustmentInterface;
 
 final class LineItemProvider implements LineItemProviderInterface
 {
-    /** @var LineItemImagesProviderInterface */
-    private $lineItemImagesProvider;
-
-    /** @var LinetItemNameProviderInterface */
-    private $lineItemNameProvider;
-
     public function __construct(
-        LineItemImagesProviderInterface $lineItemImagesProvider,
-        LinetItemNameProviderInterface $lineItemNameProvider
-    ) {
-        $this->lineItemImagesProvider = $lineItemImagesProvider;
-        $this->lineItemNameProvider = $lineItemNameProvider;
+        protected LineItemImagesProviderInterface $lineItemImagesProvider,
+        protected LinetItemNameProviderInterface  $lineItemNameProvider
+    )
+    {
     }
 
     public function getLineItem(OrderItemInterface $orderItem): ?array

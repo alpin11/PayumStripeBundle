@@ -23,7 +23,7 @@ class StripeBundle extends AbstractPimcoreBundle
 {
     use PackageVersionTrait;
 
-    public function build(ContainerBuilder $container)
+    public function build(ContainerBuilder $container): void
     {
         $container->addCompilerPass(new PayumGatewayConfigOverride([
             'stripe_js' => [
